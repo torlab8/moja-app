@@ -189,7 +189,7 @@ app.post('/api/reset/verify', async (req, res) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`\n✅ Serwer działa na: http://localhost:${PORT}`);
-  console.log(`   Strona logowania:  http://localhost:${PORT}/STRONA.html`);
+  console.log(`   Strona logowania:  http://localhost:${PORT}/index.html`);
   console.log(`   Rejestracja:       http://localhost:${PORT}/zarejstruj.html`);
   console.log(`   Reset hasła:       http://localhost:${PORT}/Resetuj.html\n`);
 });
