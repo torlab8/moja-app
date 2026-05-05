@@ -1,0 +1,4 @@
+node_modules/
+baza.json
+.env
+*.log

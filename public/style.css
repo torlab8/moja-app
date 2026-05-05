@@ -1,0 +1,162 @@
+body {
+    background-color: black;
+    display: flex;
+    justify-content: flex-end; /* Panel po prawej stronie */
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.bg-image {
+    z-index: 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.form-wrapper {
+    z-index: 3;
+    position: relative;
+    padding-right: 5%; /* Odstęp od prawej krawędzi */
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 2.5em;
+    background-color: #171717; /* Identyczny jak w rejestracji */
+    border-radius: 25px;
+    width: 350px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+#heading {
+    text-align: center;
+    color: white;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.field {
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+    border-radius: 25px;
+    padding: 0.8em;
+    background-color: #171717;
+    box-shadow: inset 2px 5px 10px rgb(5, 5, 5); /* Styl wklęsłego pola */
+    transition: 0.3s;
+}
+
+.field.error {
+    box-shadow: inset 2px 5px 10px rgb(5, 5, 5), 0 0 0 1.5px #e05555;
+}
+
+.input-icon {
+    height: 1.2em;
+    width: 1.2em;
+    fill: #888;
+}
+
+.input-field {
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: #d3d3d3;
+    font-size: 0.95em;
+}
+
+.button-login {
+    margin-top: 10px;
+    padding: 0.8em;
+    border-radius: 12px;
+    border: none;
+    background-color: #0098CE;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.button-login:hover {
+    background-color: #007aaa;
+    transform: translateY(-2px);
+}
+
+.error-msg {
+    color: #e05555;
+    font-size: 0.8em;
+    text-align: center;
+    display: none;
+}
+
+.error-msg.widoczny {
+    display: block;
+}
+
+.link-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.link-row a {
+    color: #888;
+    font-size: 0.8em;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.link-row a:hover {
+    color: #0098CE;
+}
+
+/* --- Social Media Style --- */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.icon-content {
+    margin: 0 10px;
+}
+
+.icon-content a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #252525;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    transition: 0.3s;
+}
+
+.icon-content a .filled {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+    transition: 0.4s;
+    z-index: 1;
+}
+
+.icon-content a svg { z-index: 2; position: relative; }
+
+.icon-content a[data-social="discord"]:hover .filled { background-color: #7289da; }
+.icon-content a[data-social="tiktok"]:hover .filled { background-color: #000000; }
+.icon-content a[data-social="instagram"]:hover .filled { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743); }
