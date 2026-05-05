@@ -57,9 +57,22 @@ function generateCode() {
 
 async function sendMail(to, subject, text) {
   const t = await getTransporter();
-  const info = await t.sendMail({ from: '"Auth App" <noreply@app.pl>', to, subject, text });
+  
+  const info = await t.sendMail({ 
+    // Zmieniamy na dynamiczny adres z Twoich ustawień:
+    from: `"Twoja Aplikacja" <${process.env.EMAIL_USER}>`, 
+    to, 
+    subject, 
+    text 
+  });
+
+  // Dodajmy logowanie sukcesu w konsoli Railway (pomoże Ci to sprawdzić, czy wyszło)
+  console.log(`✅ Email wysłany do: ${to}`);
+  
+  // Linia z preview działa tylko w trybie testowym Ethereal
   const preview = nodemailer.getTestMessageUrl(info);
-  if (preview) console.log(`📩 Podgląd maila: ${preview}`);
+  if (preview) console.log(`📩 Podgląd maila (testowy): ${preview}`);
+  
   return info;
 }
 
