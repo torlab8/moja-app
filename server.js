@@ -34,11 +34,17 @@ let transporter;
 async function getTransporter() {
   if (transporter) return transporter;
   if (process.env.EMAIL_USER) {
+    // Sprawdzamy czy używamy portu 465 (wymaga secure: true)
+    const isSecure = process.env.EMAIL_PORT === '465'; 
+
     transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST || 'smtp.gmail.com',
       port: parseInt(process.env.EMAIL_PORT || '587'),
-      secure: true,
-      auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS },
+      secure: isSecure, // Będzie true jeśli na Railway wpiszesz 465
+      auth: { 
+        user: process.env.EMAIL_USER, 
+        pass: process.env.EMAIL_PASS 
+      },
     });
   } else {
     const testAccount = await nodemailer.createTestAccount();
